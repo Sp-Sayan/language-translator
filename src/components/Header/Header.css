@@ -1,0 +1,19 @@
+
+*{
+    margin: 0;
+}
+.heading{
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 3px;
+    height: 30vh;
+    width: 100vw;
+    text-align: center;
+}
+.heading > h1{
+    padding: 20px 0;
+    color: white;
+}
+.heading > p{
+    padding: 15px 0;
+    color: white;
+}
