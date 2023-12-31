@@ -42,12 +42,28 @@
     text-transform: uppercase;
     letter-spacing: 3px;
 }
+.txt-area-div{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.txt-area-div > p{
+    margin-top: 7vh;
+    font-family:'Bebas Neue', sans-serif;
+    color: white;
+    letter-spacing: 3px;
+}
 .txt-area{
     resize: none;
-    margin-top: 10vh;
+    margin-top: 1vh;
+    font-size: clamp(0.5em,1vw,2em);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    padding: 10px 15px;
+    border-radius: 10px;
 }
 .txt-area::-webkit-scrollbar{
-    width: 0;
+    width: 20vw;
     height: 0;
 }
 .translate{

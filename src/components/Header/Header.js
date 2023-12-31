@@ -4,8 +4,9 @@ import "./Header.css";
 export default function Header() {
   return (
     <div className="heading">
-      <h1>Speech to Text Translator</h1>
-      <p>(A simple tool designed to make life easy)</p>
+      <h1>Select a Language</h1>
+      <p>Source language is currently English</p>
+      <p>More languages coming soon</p>
     </div>
   );
 }

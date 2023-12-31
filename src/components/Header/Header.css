@@ -10,10 +10,12 @@
     text-align: center;
 }
 .heading > h1{
-    padding: 20px 0;
+    padding: 20px 0 5px 0;
     color: white;
+    font-size: clamp(1em, 10vw, 5em);
+    letter-spacing: 10px;
 }
 .heading > p{
-    padding: 15px 0;
+    padding: 10px 0;
     color: white;
 }
