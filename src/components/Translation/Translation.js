@@ -33,10 +33,6 @@ export default function Translation(props) {
         translationParams.target
       ) {
         console.log("All props available. Initiating translation...");
-        const encodedParams = new URLSearchParams();
-        encodedParams.set("sl", translationParams.source);
-        encodedParams.set("tls", translationParams.target);
-        encodedParams.set("texts", props.OriginalLang);
         const options = {
           method: "POST",
           url: "https://deep-translate1.p.rapidapi.com/language/translate/v2",
