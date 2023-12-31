@@ -39,7 +39,7 @@ export default function Translation(props) {
         encodedParams.set("texts", props.OriginalLang);
         const options = {
           method: "POST",
-          url: "https:deep-translate1.p.rapidapi.com/language/translate/v2",
+          url: "https://deep-translate1.p.rapidapi.com/language/translate/v2",
           headers: {
             "content-type": "application/json",
             "X-RapidAPI-Key":
