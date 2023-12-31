@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+.btn-text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.buttons{
+    margin: 50px auto;
+    height: 10vh;
+    width: 60vw;
+    display: flex;
+    justify-content: space-around;
+}
+.btn-style{
+    height: 5vh;
+    width: 20%;
+    border-radius: 20px ;
+    font-size: clamp(0.5em,1vw,2em);
+    text-transform: uppercase;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    background: transparent;
+    box-shadow:  0px 0px 0px #428276,
+             0px 0px 0px #70dec8;
+    border:2px solid rgba(255, 255, 255, 0.51);
+    color: white;
+    cursor: pointer;
+    scale: 1.1;
+    transition: box-shadow 0.2s ease-in;
+    
+}
+.btn-style:hover{
+    box-shadow:  13px 13px 5px #428276,
+             -13px -13px 5px #70dec8;
+}
+.click{
+    scale: 0.9;
+    background-color: white;
+    color: #70dec8;
+    transition: all 0.4s ;
+}
+.txt-placeholder{
+    margin-top: 10vh;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(0.5em,2vw,2em);
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+.txt-area-div{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.txt-area-div > p{
+    margin-top: 7vh;
+    font-family:'Bebas Neue', sans-serif;
+    color: white;
+    letter-spacing: 3px;
+}
+.txt-area{
+    resize: none;
+    margin-top: 1vh;
+    font-size: clamp(0.5em,1vw,2em);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    padding: 10px 15px;
+    border-radius: 10px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.586);
+    outline: none;
+}
+.txt-area::-webkit-scrollbar{
+    width: 20vw;
+    height: 0;
+    
+}
+
+.translate{
+    margin-top: -4vh;
+}
+.btn-all{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media only screen and (max-width: 720px){
+    .buttons{
+        margin: 50px auto;
+        height: 28vh;
+        width: 60vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .btn-style{
+        height: 5vh;
+        width: 50%;
+        box-shadow:  0px 0px 0px #428276,
+        0px 0px 0px #70dec8;
+    }
+    .btn-style:hover{
+        box-shadow:  13px 9px 5px #428276,
+                 -13px -9px 5px #70dec8;
+    }
+    .txt-area{
+        font-size: clamp(0.5em,1vw,2em);
+        width: 70vw;
+    }
+    .txt-area::-webkit-scrollbar{
+        width: 20vw;
+        height: 0;
+        
+    }
+    .txt-edit{
+        font-size: 0.5em;
+    }
+}
+@media only screen and (min-width: 720px) and (max-width: 1024px){
+    .buttons{
+        margin: 50px auto;
+        height: 28vh;
+        width: 60vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .btn-style{
+        height: 5vh;
+        width: 50%;
+        box-shadow:  0px 0px 0px #428276,
+        0px 0px 0px #70dec8;
+    }
+    .btn-style:hover{
+        box-shadow:  13px 9px 5px #428276,
+                 -13px -9px 5px #70dec8;
+    }
+    .txt-area{
+        font-size: clamp(0.5em,1vw,2em);
+        width: 70vw;
+    }
+    .txt-area::-webkit-scrollbar{
+        width: 20vw;
+        height: 0;
+        
+    }
+    .txt-edit{
+        font-size: 0.5em;
+    }
+}
