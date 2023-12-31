@@ -8,7 +8,7 @@
   width: 100vw;
   /* background-image: url("assets/main-bg.jpg"); */
   overflow-x: hidden;
-overflow-y: scroll;
+overflow-y: hidden;
 }  
 .bg-video{
   min-height: 100%;
