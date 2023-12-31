@@ -4,6 +4,7 @@
 .container{
   height: 100vh;
   width: 100vw;
-  background-color: #4b134f;
-
+  background-color: blueviolet;
+  /* background-image: url("assets/main-bg.jpg"); */
+  background-size: cover;
 }  
