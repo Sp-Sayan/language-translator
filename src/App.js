@@ -8,7 +8,7 @@ import Footer from "./components/Footer/Footer";
 
 export const Preview = React.createContext();
 function App() {
-  const [isPreview, setIsPreview] = useState(false);
+  const [isPreview, setIsPreview] = useState(true);
   return (
     <div>
       <Preview.Provider value={[isPreview, setIsPreview]}>
