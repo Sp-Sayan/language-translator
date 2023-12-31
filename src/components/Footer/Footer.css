@@ -1,0 +1,22 @@
+.footer{
+    margin-top: 10vh;
+    height: 10vh;
+    width: 100vw;
+    
+}
+.footer > p{
+    color: white;
+    text-align: center;
+    font-size: 1.2em;
+    letter-spacing: 3px;
+}
+span{
+    color: #e25555;
+    filter: contrast(200%);
+    font-size: 1.2em;
+}
+@media only screen and (max-width: 720px){
+    .footer > p{
+        font-size: 0.8em;
+    }
+}

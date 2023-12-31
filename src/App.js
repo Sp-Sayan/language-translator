@@ -3,6 +3,8 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import LangSelect from "./components/LangSelect/LangSelect";
 import Preview_Page from "./components/Preview_Page/Preview_Page";
+import MainVideoBg from "./assets/main-video-bg2.mp4";
+import Footer from "./components/Footer/Footer";
 
 export const Preview = React.createContext();
 function App() {
@@ -14,8 +16,10 @@ function App() {
           <Preview_Page />
         ) : (
           <div className="container">
+            <video autoPlay loop muted className="bg-video" src={MainVideoBg} />
             <Header />
             <LangSelect />
+            <Footer />
           </div>
         )}
       </Preview.Provider>

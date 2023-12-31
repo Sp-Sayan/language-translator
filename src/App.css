@@ -1,10 +1,30 @@
 *{
   margin: 0;
+ 
 }
 .container{
   height: 100vh;
   width: 100vw;
-  background-color: blueviolet;
   /* background-image: url("assets/main-bg.jpg"); */
-  background-size: cover;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }  
+.bg-video{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  object-fit: contain;
+  background-repeat: no-repeat;
+  z-index: -99;
+}
+::-webkit-scrollbar {
+  width: 5px; /* width of the scrollbar */
+  height: 5px; /* height of the scrollbar */
+}
+::-webkit-scrollbar-track {
+  background: transparent; /* color of the track */
+}
+::-webkit-scrollbar-thumb {
+  background: #888; /* color of the thumb */
+  border-radius: 6px; /* rounded corners of the thumb */
+}

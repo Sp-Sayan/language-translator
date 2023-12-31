@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import "./Preview.css";
 import { motion, animate, inView } from "framer-motion";
 import { Preview } from "../../App";
-import previewBg from "../../assets/preview-bg.mp4";
+import { loadFull } from "tsparticles";
+import Particles_config from "../Particles/particles_config";
 const AnimationVariants = (key) => ({
   hover: {
     scale: 1.2,
@@ -25,10 +26,14 @@ export default function Preview_Page() {
   const HandleClick = () => {
     setIsPreview(false);
   };
-
+  const particlesInit = async (main) => {
+    console.log(main);
+    await loadFull(main);
+  };
   return (
     <div className="preview-heading">
-      <video autoPlay muted loop className="bg-video" src={previewBg} alt="" />
+      <Particles_config className="preview-bg" />
+      {/* <video autoPlay muted loop className="bg-video" src={previewBg} alt="" /> */}
       <span className="preview-header-text">
         <motion.h1
           variants={AnimationVariants(1)}

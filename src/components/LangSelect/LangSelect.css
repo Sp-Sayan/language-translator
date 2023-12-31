@@ -1,15 +1,15 @@
 .lang-box{
     
-    height: 12vh;
-    width: 60vw;
+    height: 12%;
+    width: 60%;
     display: flex;
     align-items: center;
     justify-content: space-around;
     flex-wrap: wrap;
-    border-radius: 84px;
-    background: #4b134f;
-    box-shadow: inset 27px 27px 54px #370e3a,
-                inset -27px -27px 54px #5f1864;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #509e8f, #5fbcaa);
+    box-shadow: inset 27px 27px 54px #4c9687,
+                inset -27px -27px 54px #66cab7;
     margin: auto;
     z-index: -1;
 }
@@ -21,7 +21,7 @@ ul li > select{
     outline: none;
     background-color: transparent;
     color: white;
-    font-size: clamp(0.5em,2vw,2em);
+    font-size: clamp(0.5em,1.5vw,2em);
 }
 .lang-options{
     color: black;
@@ -30,3 +30,53 @@ ul li > select{
     cursor: pointer;
     font-size: clamp(0.5em,2.5vw,2em);
 }
+
+@media only screen and (max-width: 720px){
+    .lang-box{
+        height: 30%;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: space-between;
+        flex-wrap:nowrap;
+    }
+    ul li > select{
+        margin-left: -20px;
+        height: 8vh;
+        width: 25vw;
+        font-size: clamp(0.5em,4vw,2em);
+        letter-spacing: 3px;
+    }
+    .rev-icon{
+        font-size: clamp(0.5em,5vw,2em);
+    }
+}
+@media only screen and (min-width: 720px) and (max-width: 1024px) and (orientation: landscape){
+
+        .lang-box{
+            margin-top: 40vh;
+            
+        }
+}
+
+@media only screen and (min-width: 720px) and (max-width: 1024px){
+    .lang-box{
+        height: 20vh;
+        width: 60%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap:nowrap;
+    }
+    ul li > select{
+        margin-left: -10px;
+        height: 8vh;
+        width: 15vw;
+        font-size: clamp(0.5em,2vw,2em);
+        letter-spacing: 3px;
+    }
+    .rev-icon{
+        font-size: clamp(0.5em,5vw,2em);
+    }
+}   

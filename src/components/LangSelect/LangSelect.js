@@ -21,11 +21,23 @@ const AnimationVariants = (key) => ({
   slideIn: {
     x: 0,
     transition: {
-      duration: 1 * key,
+      duration: key,
     },
   },
-  initial: {
+  FadeIn: {
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+    },
+  },
+  initialSlide: {
     x: "100vw",
+  },
+  initialTextArea: {
+    x: -400,
+  },
+  initialFade: {
+    opacity: 0,
   },
 });
 
@@ -52,6 +64,18 @@ export default function LangSelect() {
   // useEffect(() => {
   //   console.log("translatedText:", translatedText);
   // }, [translatedText]);
+
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    }
+  });
 
   const { transcript, browserSupportsSpeechRecognition, resetTranscript } =
     useSpeechRecognition({});
@@ -103,6 +127,8 @@ export default function LangSelect() {
     setClicked5(false);
 
     if (!clicked3) {
+      SpeechRecognition.abortListening();
+      SpeechRecognition.startListening({ continuous: false });
       // Copy the content of the textarea to the clipboard
       navigator.clipboard
         .writeText(textBoxRef.current.value)
@@ -125,31 +151,13 @@ export default function LangSelect() {
           });
 
           Toast.fire({
-            icon: "success",
+            icon: "none",
             title: "Copied to Clipboard",
           });
         })
         .catch((error) => {
           // Handle any errors during copying
           console.error("Copy to clipboard failed:", error);
-
-          // Pop up notification for copy failure
-          const Toast = Swal.mixin({
-            toast: true,
-            position: "top-end",
-            showConfirmButton: false,
-            timer: 2000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.onmouseenter = Swal.stopTimer;
-              toast.onmouseleave = Swal.resumeTimer;
-            },
-          });
-
-          Toast.fire({
-            icon: "error",
-            title: "Copy to Clipboard Failed",
-          });
         });
     }
   };
@@ -167,20 +175,10 @@ export default function LangSelect() {
       textBoxRef.current.value = "";
     }
     //Pop up Notif for Reset
-    const Toast = Swal.mixin({
-      toast: true,
-      position: "top-end",
-      showConfirmButton: false,
-      timer: 2000,
-      timerProgressBar: true,
-      didOpen: (toast) => {
-        toast.onmouseenter = Swal.stopTimer;
-        toast.onmouseleave = Swal.resumeTimer;
-      },
-    });
+
     if (!clicked4) {
       Toast.fire({
-        icon: "success",
+        icon: "none",
         title: "Text Cleared",
       });
     }
@@ -208,8 +206,6 @@ export default function LangSelect() {
     resetTranscript(); // Reset the transcript
     setTranslatedText(translatedContent);
     setTranslateTime(true);
-
-    //textBoxRef.current.value = translatedText;
   };
 
   if (!browserSupportsSpeechRecognition) {
@@ -217,80 +213,109 @@ export default function LangSelect() {
   }
 
   return (
-    <div className="lang-box">
-      <ul className="list-style">
-        <li>
-          <select
-            id="source-lang"
-            value={currentLangLeft}
-            onChange={(e) => setCurrentLangLeft(e.target.value)}
-          >
-            <option className="lang-options" value="en">
-              English
-            </option>
-          </select>
-        </li>
-      </ul>
-      <FontAwesomeIcon
-        className="rev-icon"
-        icon={faRepeat}
-        spin
-        size="2xl"
-        style={{ color: "#ffffff" }}
-      />
-      <ul className="list-style">
-        <li>
-          <select
-            value={currentLangRight}
-            onChange={(e) => setCurrentLangRight(e.target.value)}
-          >
-            <option className="lang-options" value="en">
-              English
-            </option>
-            <option className="lang-options" value="bn">
-              Bengali
-            </option>
-            <option className="lang-options" value="hi">
-              Hindi
-            </option>
-          </select>
-        </li>
-      </ul>
+    <div className="lang-box-container">
+      <div className="lang-box">
+        <ul className="list-style">
+          <li>
+            <select
+              id="source-lang"
+              value={currentLangLeft}
+              onChange={(e) => setCurrentLangLeft(e.target.value)}
+            >
+              <option className="lang-options" value="en">
+                English
+              </option>
+            </select>
+          </li>
+        </ul>
+        <FontAwesomeIcon
+          className="rev-icon"
+          icon={faRepeat}
+          spin
+          size="2xl"
+          style={{ color: "#ffffff" }}
+        />
+        <ul className="list-style">
+          <li>
+            <select
+              value={currentLangRight}
+              onChange={(e) => setCurrentLangRight(e.target.value)}
+            >
+              <option className="lang-options" value="en">
+                English
+              </option>
+              <option className="lang-options" value="bn">
+                Bengali
+              </option>
+              <option className="lang-options" value="bho">
+                Bhojpuri
+              </option>
+              <option className="lang-options" value="fr">
+                French
+              </option>
+              <option className="lang-options" value="de">
+                German
+              </option>
+              <option className="lang-options" value="hi">
+                Hindi
+              </option>
+              <option className="lang-options" value="es">
+                Spanish
+              </option>
+              <option className="lang-options" value="ta">
+                Tamil
+              </option>
+            </select>
+          </li>
+        </ul>
+      </div>
       <div className="btn-text">
         {showButton ? (
-          <div className="buttons">
-            <button
-              onClick={HandleStartClick}
-              className={`start-btn btn-style ${clicked1 ? "click" : ""}`}
-            >
-              Start Listening
-            </button>
-            <motion.button
-              variants={AnimationVariants(0.3)}
-              initial="initial"
-              animate="slideIn"
-              onClick={HandleStopClick}
-              className={`start-btn btn-style ${clicked2 ? "click" : ""}`}
-            >
-              Stop Listening
-            </motion.button>
-            <motion.button
-              variants={AnimationVariants(0.5)}
-              initial="initial"
-              animate="slideIn"
-              onClick={HandleCopyClick}
-              className={`start-btn btn-style ${clicked3 ? "click" : ""}`}
-            >
-              Copy to Clipboard
-            </motion.button>
+          <div className="btn-all">
+            <div className="buttons">
+              <button
+                onClick={HandleStartClick}
+                className={`start-btn btn-style ${clicked1 ? "click" : ""}`}
+              >
+                Start Listening
+              </button>
+              <motion.button
+                variants={AnimationVariants(0.3)}
+                initial="initialSlide"
+                animate="slideIn"
+                onClick={HandleStopClick}
+                className={`start-btn btn-style ${clicked2 ? "click" : ""}`}
+              >
+                Stop Listening
+              </motion.button>
+              <motion.button
+                variants={AnimationVariants(0.5)}
+                initial="initialSlide"
+                animate="slideIn"
+                onClick={HandleCopyClick}
+                className={`start-btn btn-style ${clicked3 ? "click" : ""}`}
+              >
+                Copy to Clipboard
+              </motion.button>
+              <motion.button
+                variants={AnimationVariants(0.7)}
+                initial="initialSlide"
+                animate="slideIn"
+                onClick={HandleResetClick}
+                className={`start-btn btn-style ${clicked4 ? "click" : ""}`}
+              >
+                Reset
+              </motion.button>
+            </div>
             <motion.button
               variants={AnimationVariants(0.7)}
-              initial="initial"
-              animate="slideIn"
-              onClick={HandleResetClick}
-              className={`start-btn btn-style ${clicked4 ? "click" : ""}`}
+              initial="initialFade"
+              animate="FadeIn"
+              onClick={HandleTranslateClick}
+              className={`translate start-btn btn-style ${clicked5 ? "click" : ""
+                }`}
             >
-              Reset
+              Translate
             </motion.button>
           </div>
         ) : (
@@ -303,48 +328,13 @@ export default function LangSelect() {
             </button>
           </div>
         )}
-
-        {/* <button
-            onClick={HandleStartClick}
-            className={`start-btn btn-style ${clicked1 ? "click" : ""}`}
-          >
-            Start Listening
-          </button>
-          <button
-            onClick={HandleStopClick}
-            className={`start-btn btn-style ${clicked2 ? "click" : ""}`}
-          >
-            Stop Listening
-          </button>
-          <button
-            onClick={HandleCopyClick}
-            className={`start-btn btn-style ${clicked3 ? "click" : ""}`}
-          >
-            Copy to Clipboard
-          </button>
-          <button
-            onClick={HandleResetClick}
-            className={`start-btn btn-style ${clicked4 ? "click" : ""}`}
-          >
-            Reset
-          </button> */}
-
-        <button
-          onClick={HandleTranslateClick}
-          className={`translate start-btn btn-style ${clicked5 ? "click" : ""}`}
-        >
-          Translate
-        </button>
         {showText ? (
           <div className="txt-area-div">
-            <p>You can make any corrections required.</p>
+            <p className="txt-edit">You can make any corrections required.</p>
             <motion.textarea
-              animate={{
-                x: 0,
-              }}
-              initial={{
-                x: -500,
-              }}
+              variants={AnimationVariants(0.5)}
+              initial="initialTextArea"
+              animate="slideIn"
               name="text-translated"
               placeholder={
                 translateTime ? "Please Wait..." : "Speak Something..."
