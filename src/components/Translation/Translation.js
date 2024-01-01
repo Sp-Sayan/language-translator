@@ -23,9 +23,9 @@ export default function Translation(props) {
     }
   }, [props.langLeft, props.langRight]);
   useEffect(() => {
-    console.log("OriginalLang:", props.OriginalLang);
-    console.log("langLeft:", translationParams.source);
-    console.log("langRight:", translationParams.target);
+    //console.log("OriginalLang:", props.OriginalLang);
+    //console.log("langLeft:", translationParams.source);
+    //console.log("langRight:", translationParams.target);
     const translate = () => {
       if (
         props.OriginalLang &&
@@ -53,7 +53,7 @@ export default function Translation(props) {
             const response = await axios.request(options);
             if (response.data) {
               setTranslatedText(response.data.data.translations.translatedText);
-              console.log(response.data.data.translations.translatedText);
+              //console.log(response.data.data.translations.translatedText);
             }
           } catch (error) {
             console.error("Translation error:", error);
