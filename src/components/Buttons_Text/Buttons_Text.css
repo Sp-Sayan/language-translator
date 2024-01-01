@@ -101,6 +101,7 @@
         width: 50%;
         box-shadow:  0px 0px 0px #428276,
         0px 0px 0px #70dec8;
+        font-weight: 600;
     }
     .btn-style:hover{
         box-shadow:  13px 9px 5px #428276,
