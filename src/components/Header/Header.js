@@ -6,7 +6,7 @@ export default function Header() {
     <div className="heading">
       <h1>Select a Language</h1>
       <p>Source language is currently English</p>
-      <p>More languages coming soon</p>
+      <p>After Translating once, please click Start Listening to proceed again</p>
     </div>
   );
 }
