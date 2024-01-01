@@ -16,7 +16,7 @@ function App() {
           <Preview_Page />
         ) : (
           <div className="container">
-            <video autoPlay loop muted className="bg-video" src={MainVideoBg} />
+            <video preload="auto" autoPlay loop muted className="bg-video" src={MainVideoBg} />
             <Header />
             <LangSelect />
             <Footer />

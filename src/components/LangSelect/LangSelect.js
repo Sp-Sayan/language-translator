@@ -270,6 +270,29 @@ export default function LangSelect() {
         </ul>
       </div>
       <div className="btn-text">
+        {showText ? (
+          <div className="txt-area-div">
+            <p className="txt-edit">You can make any corrections required.</p>
+            <motion.textarea
+              variants={AnimationVariants(0.5)}
+              initial="initialTextArea"
+              animate="slideIn"
+              name="text-translated"
+              placeholder={
+                translateTime ? "Please Wait..." : "Speak Something..."
+              }
+              className="txt-area"
+              id="txt-trans"
+              cols="100"
+              ref={textBoxRef}
+            //defaultValue={transcript || translatedText}
+            ></motion.textarea>
+          </div>
+        ) : (
+          <p className="txt-placeholder">
+            Click Start Listening to get started ;)
+          </p>
+        )}
         {showButton ? (
           <div className="btn-all">
             <div className="buttons">
@@ -328,29 +351,7 @@ export default function LangSelect() {
             </button>
           </div>
         )}
-        {showText ? (
-          <div className="txt-area-div">
-            <p className="txt-edit">You can make any corrections required.</p>
-            <motion.textarea
-              variants={AnimationVariants(0.5)}
-              initial="initialTextArea"
-              animate="slideIn"
-              name="text-translated"
-              placeholder={
-                translateTime ? "Please Wait..." : "Speak Something..."
-              }
-              className="txt-area"
-              id="txt-trans"
-              cols="100"
-              ref={textBoxRef}
-            //defaultValue={transcript || translatedText}
-            ></motion.textarea>
-          </div>
-        ) : (
-          <p className="txt-placeholder">
-            Click Start Listening to get started ;)
-          </p>
-        )}
+
       </div>
       <TextContext.Provider value={[translatedText, setTranslatedText]}>
         <Translation
